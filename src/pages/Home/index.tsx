@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
+import { AntDesign } from '@expo/vector-icons';
 import { Text } from "react-native";
 
 import Watering from "../../assets/watering.png";
@@ -32,7 +33,7 @@ const Home = () => {
           sempre que precisar.
         </Description>
         <NextButton onPress={handleNavigate} activeOpacity={0.7}>
-          <Text>ICON</Text>
+        <AntDesign name="right" size={24} color="white" />
         </NextButton>
       </Content>
     </Container>

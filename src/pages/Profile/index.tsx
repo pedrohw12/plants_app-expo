@@ -1,5 +1,5 @@
-import React from "react";
-import { Text } from "react-native";
+import React, { useState } from "react";
+import { View } from "react-native";
 import {
   Container,
   Content,
@@ -8,17 +8,29 @@ import {
   List,
   ListItem,
   Title,
+  SubTitle,
+  ListItemText,
 } from "./styles";
 
 import server from "../../server.json";
+import { Avatar } from "../../components/Avatar";
 
-const Profile = () => {
+const Profile = ({ route }) => {
+  const [selectedEnv, setSelectedEnv] = useState("");
+
+  function handleSelectEnv(enviroKey) {
+    setSelectedEnv(enviroKey);
+  }
+
   return (
     <Container>
       <Content>
         <Header>
-          <Title>Olá,{`\n`}Tiago</Title>
-          <Title>T</Title>
+          <View>
+            <Title>Olá,</Title>
+            <SubTitle>{route.params.name}</SubTitle>
+          </View>
+          <Avatar urlImage="https://avatars.githubusercontent.com/u/91907545?s=40&v=4" />
         </Header>
         <Description>
           Em qual ambiente{`\n`}você quer colocar sua planta?
@@ -29,8 +41,14 @@ const Profile = () => {
           contentContainerStyle={{ paddingRight: 40 }}
         >
           {server.plants_environments.map((enviro) => (
-            <ListItem>
-              <Text key={enviro.key}>{enviro.title}</Text>
+            <ListItem
+              isSelected={selectedEnv === enviro.key}
+              onPress={() => handleSelectEnv(enviro.key)}
+              key={enviro.key}
+            >
+              <ListItemText isSelected={selectedEnv === enviro.key}>
+                {enviro.title}
+              </ListItemText>
             </ListItem>
           ))}
         </List>

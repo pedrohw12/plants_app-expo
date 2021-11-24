@@ -1,5 +1,5 @@
-import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
+import { useNavigation } from "@react-navigation/native";
 import {
   BtnText,
   ButtonContainer,
@@ -24,7 +24,7 @@ const SetName = () => {
   function handleConfirm() {
     if (!name) return;
     setIsConfirmed(true);
-    if (isConfirmed) navigation.navigate("Profile");
+    if (isConfirmed) navigation.navigate("Profile", { name });
   }
 
   return (

@@ -21,6 +21,12 @@ export const Header = styled.View`
 
 export const Title = styled.Text`
   font-size: 26px;
+  line-height: 34px;
+  color: ${colors.green_dark};
+`;
+
+export const SubTitle = styled.Text`
+  font-size: 26px;
   font-weight: bold;
   line-height: 34px;
   color: ${colors.green_dark};
@@ -51,12 +57,17 @@ export const List = styled.ScrollView`
   
 `
 
-export const ListItem = styled.View`
+export const ListItem = styled.TouchableOpacity`
   height: 40px;
   border-radius: 8px;
   margin: 10px;
-  background-color: ${colors.green};
+  background-color: ${props => props.isSelected ? colors.green : colors.gray};
   justify-content: center;
   align-items: center;
   padding: 10px;
+`;
+
+export const ListItemText = styled.Text`
+  font-weight: ${props => props.isSelected ? 'bold' : 'normal'};
+  color: ${props => props.isSelected ? colors.green_dark : colors.body_dark};
 `;
